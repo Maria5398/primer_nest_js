@@ -76,3 +76,13 @@ Nest is [MIT licensed](LICENSE).
 
 ## Video youtube (https://www.youtube.com/watch?v=NYoCbihISxw&list=PL4DHn8tKd1sptBisVPE274OrTFKskNsrL)
 
+## comandos usados 
+ - nest new proyect
+ - npm i
+ - nest --help (para info)
+ - nest generate controller tasks
+ - nest g service tasks
+ - nest g service tasks
+ - nest g module tasks 
+
+ - npm run start:dev
