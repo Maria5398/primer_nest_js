@@ -6,7 +6,7 @@ import { TasksService } from './tasks/tasks.service';
 //import { TasksModule } from './tasks/tasks.module';
 //import { MongooseModule } from '@nestjs/mongoose';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { tasks } from './tasks/entities/task.entity';
+import { Tasks } from './tasks/entities/task.entity';
 
 @Module({
   imports: [
@@ -17,7 +17,7 @@ import { tasks } from './tasks/entities/task.entity';
       username: 'root',
       password: 'mysql',
       database: 'first-nest',
-      entities: [tasks],
+      entities: [Tasks],
       synchronize: true,
     }),
   ],

@@ -1,8 +1,8 @@
 import { Entity, Column, PrimaryGeneratedColumn} from 'typeorm';
 //import { Table, Model } from 'sequelize-typescript';
 
-@Entity()
-export class tasks {
+@Entity('tasks')
+export class Tasks {
   @PrimaryGeneratedColumn()
   id: number;
 

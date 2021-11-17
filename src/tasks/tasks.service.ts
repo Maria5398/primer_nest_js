@@ -1,33 +1,23 @@
-import { Injectable } from '@nestjs/common';
-import { Task } from './interfaces/task';
+import { Injectable, Inject } from '@nestjs/common';
+import { Tasks } from './interfaces/task';
+//import { InjectModel } from 'sequelize-typescript';
+import { Task } from './entities/task.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
 @Injectable()
 export class TasksService {
 
-    tasks: Task[] = [
-        { //simula db
-            id:1,
-            titulo: "prueba",
-            description: "prueba tarea",
-            done: true
-        },
-        {
-            id:2,
-            titulo: "prueba 2",
-            description: "prueba tarea 2",
-            done: true
-        },
-        {
-            id:3,
-            titulo: "prueba 3",
-            description: "prueba tarea 3",
-            done: true
-        }
-    ];
-    getTasks(): Task[] { //devuelve todas las tareas
-        return this.tasks;
+    constructor(
+        @Inject('TASKS_REPOSITORY')
+        private tasksRepository: typeof Tasks,
+      ) {}
+      private readonly tasks: Task[] = [];
+    
+      create(task: Tasks) {
+        this.tasks.push(task);
+      }
+    async getTasks(){
+        return await this.TasksRepository.find();
     }
-    getTask(id: number): Task { //solo devuelve la tarea selecionada
-        return this.tasks.find(task => task.id === id);
-    }
-
 }
