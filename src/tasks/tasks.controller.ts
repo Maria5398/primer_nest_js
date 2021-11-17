@@ -2,20 +2,25 @@ import { Controller, Get, Post, Put, Delete, Body, Param, Req, Res } from '@nest
 import { CreateTaskDto } from './dto/create-task.dto';
 //import { Request, Response } from "express";
 import { TasksService } from './tasks.service';
+import { Task } from './interfaces/task';
 
 @Controller('tasks')
 export class TasksController {
 
+    constructor(private taskService: TasksService) {} //con esto se puede usar el metodo 
+
     @Get() //decorardor es solo un metodo que proporciona informacion extra
-    /*
-    este no se utiliza ya que no le corresponde a nest
-        getTask(@Req() req, @Res() res): Response {
-        return res.send('hellor world');
+
+    getTasks(): Task[] { //recibe json
+        return this.taskService.getTasks();
     }
-    */
-    getTasks(): { hello: string} { //recibe json
-        return {"hello": "letras"};
+
+    @Get(':id')
+    getTask(@Param('id') id: string){
+        return this.taskService.getTask(parseInt(id));
     }
+    
+
     @Post() 
     createTask(@Body() task: CreateTaskDto) {
         console.log(task.description, task.titulo, task.done);

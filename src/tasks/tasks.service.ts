@@ -23,10 +23,10 @@ export class TasksService {
             done: true
         }
     ];
-    getTask(): Task[] { //devuelve todas las tareas
+    getTasks(): Task[] { //devuelve todas las tareas
         return this.tasks;
     }
-    getTask(id): Task { //solo devuelve la tarea selecionada
+    getTask(id: number): Task { //solo devuelve la tarea selecionada
         return this.tasks.find(task => task.id === id);
     }
 
